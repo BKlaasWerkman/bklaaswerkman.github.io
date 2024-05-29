@@ -18,7 +18,8 @@ Mail User Agent (MUA): This is a (part of a) program connecting to a SMTP-server
 
 Mail Transfer Agent (MTA): The transport service part of a program. They receive and transfer the emails. This might be an Exchange server, an internet facing gateway and so on.
 
-A workflow of an email´s travel from one user to another would look like so: MUA → MSA → MTA → internet → MTA → MDA → MUA
+A workflow of an email´s travel from one user to another would look like so: 
+__MUA → MSA → MTA → internet → MTA → MDA → MUA__
 
 A “relay” SMTP system receives mail from an SMTP client and transmits it, without modification to the message data other than adding trace information, to another SMTP server for further relaying or for delivery.
 
@@ -176,7 +177,7 @@ SignatureAlgorithm     	rsa-sha256
 Now create the files TrustedHosts, KeyTable, and SigningTable with touch
 
 In the TrustedHosts file we’ll add:
-```
+```sass
 127.0.0.1
 
 ::1
@@ -187,6 +188,8 @@ Example.com
 
 *.example.com
 ```
+{: file='/etc/opendkim/TrustedHosts'}
+
 KeyTable file:
 ```
 mail._domainkey.example.com example.com:mail:/etc/opendkim/mail.private
