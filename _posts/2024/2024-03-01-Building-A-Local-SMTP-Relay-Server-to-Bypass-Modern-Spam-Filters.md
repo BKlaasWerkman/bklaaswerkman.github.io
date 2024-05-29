@@ -161,7 +161,7 @@ and Uncomment
 #Socket	inet:8891@localhost
 ```
 In the same OpenDKIM Configuration file, add these lines to the bottom of the file:
-```
+```sass
 ExternalIgnoreList refile:/etc/opendkim/TrustedHosts
 
 InternalHosts refile:/etc/opendkim/TrustedHosts
@@ -172,7 +172,7 @@ SigningTable refile:/etc/opendkim/SigningTable
 
 SignatureAlgorithm     	rsa-sha256
 ```
-
+{: file='/etc/opendkim.conf'}
 
 Now create the files TrustedHosts, KeyTable, and SigningTable with touch
 
@@ -191,13 +191,15 @@ Example.com
 {: file='/etc/opendkim/TrustedHosts'}
 
 KeyTable file:
-```
+```sass
 mail._domainkey.example.com example.com:mail:/etc/opendkim/mail.private
 ```
+{: file='/etc/opendkim/KeyTable'}
 SigningTable file:
-```
+```sass
 *.example.com mail._domainkey.example.com
 ```
+{: file='/etc/opendkim/SigningTable'}
 ```shell
 Sudo systemctl restart postfix
 
