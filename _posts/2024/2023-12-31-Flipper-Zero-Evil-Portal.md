@@ -7,7 +7,7 @@ categories: [CyberSecurity, Gadgets]
 tags: [hardware]     # TAG names should always be lowercase
 ---
 
-![Desktop View](/assets/img/flipper.jpg){: width="972" height="589" }
+![Desktop View](/assets/img/Flipper.jpg){: width="972" height="589" }
 _Picture above demonstrating evil portal credential harvesting using the Flipper Zero._
 
 Flipper flashed with the latest Xtreme firmware.
