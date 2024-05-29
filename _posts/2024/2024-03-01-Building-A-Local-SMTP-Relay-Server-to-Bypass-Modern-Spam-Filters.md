@@ -141,25 +141,28 @@ Edit OpenDKIM main configuration file
 sudo vi /etc/opendkim.conf
 ```
 Add:
-```
+```sass
 Autorestart                     	yes
 
 AutorestartRate            	10/1h
 
 Uncomment #LogWhy and change from no to yes
 ```
+{: file='/etc/opendkim.conf'}
 Find the “Mode v” line, and change it to “Mode sv”. By default, OpenDKIM is set to verification mode (v), which verifies the DKIM signatures of receiving email messages. Changing the mode to “sv,” will let us activate the signing mode for outgoing emails.
 
 Change “Mode v” to “Mode sv”
 
 Comment out
-```
+```sass
 #Socket	local:/run/opendkim/opendkim.sock
 ```
+{: file='/etc/opendkim.conf'}
 and Uncomment
-```
+```sass
 #Socket	inet:8891@localhost
 ```
+{: file='/etc/opendkim.conf'}
 In the same OpenDKIM Configuration file, add these lines to the bottom of the file:
 ```sass
 ExternalIgnoreList refile:/etc/opendkim/TrustedHosts
