@@ -1,16 +1,18 @@
 ---
 title: Data-Bouncer
-date: 2024-05-20 21:00:00 - 0500
+description: Leverage trusted domains and HTTP headers to stealthily transmit data. 
+author: BW
+date: 2024-05-19 20:00:00 - 0500
 categories: [CyberSecurity, Offensive Security]
 tags: [offsec]     # TAG names should always be lowercase
 ---
 
-I came across this Proof of Concept outlined here in https://thecontractor.io/data-bouncing.
+I came across this Proof of Concept outlined here in <https://thecontractor.io/data-bouncing>.
 I took their ideas and wrote two Go scripts that can be used for educational purposes. Please don't do anything illegal.
 
-One script that encrypts and bounces the data you want to exfiltrate and the other that reassembles and decrypts it.
+One script, bounce.go, encrypts and exfiltrates data via DNS by breaking it into chunks and sending it through HTTP headers. The second script, regenerate.go, reassembles and decrypts the data from the exfiltrated chunks. This method leverages trusted domains and HTTP headers to stealthily transmit data.
 
-You will need an OOB dns server under you're control for this to work and collect the data. Here I'm using https://github.com/projectdiscovery/interactsh
+You will need an OOB dns server under you're control for this to work and collect the data. Here I'm using <https://github.com/projectdiscovery/interactsh>.
 
 From my testing this should work on most websites/domains that touches Akamai.
 
