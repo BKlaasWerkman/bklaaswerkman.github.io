@@ -6,7 +6,7 @@ date: 2024-05-19 20:00:00 - 0500
 categories: [CyberSecurity, Offensive Security]
 tags: [offsec]     # TAG names should always be lowercase
 image:
-    lqip: /assets/img/preview/data-bouncer.jpg
+  lqip: /assets/img/preview/data-bouncer.jpg
 ---
 
 I came across this Proof of Concept outlined here in <https://thecontractor.io/data-bouncing>.
