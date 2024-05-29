@@ -26,9 +26,8 @@ Setting up a Message Transport System (MTS) aka SMTP server (Postfix)
 
 Postfix is a light, easy to use MTS which serves 2 primary purposes:
 
-    Transporting email messages from a mail client/mail user agent (MUA) to a remote SMTP server.
-
-    Accepts emails from other SMTP servers.
+Transporting email messages from a mail client/mail user agent (MUA) to a remote SMTP server.
+Accepts emails from other SMTP servers.
 
 We will configure postfix for a single domain in this tutorial. Before we install postfix note to do the following before.
 
@@ -60,9 +59,8 @@ Installing Postfix
 
 Run this in a terminal:
 ```shell
-    sudo apt update
-
-    sudo apt install postfix -y
+sudo apt update
+sudo apt install postfix -y
 ```
 While installation you will be asked to select a type for mail configuration. Select Internet Site. This option allows Postfix to send emails to other MTAs and receive emails from other MTAs.
 
@@ -83,30 +81,30 @@ Use a valid subdomain replacement if you would need to implement one, it will wo
 Once installation is complete a /etc/postfix/main.cf config file would be automatically generated along with postfix starting up.
 
 Check your current Postfix version using:
-```
-    postconf mail_version.
+```shell
+postconf mail_version.
 ```
 Use Socket Statistics - ss utility to check if postfix is running on port 25 succesfully:
-```
-    sudo ss -lnpt | grep master
+```shell
+sudo ss -lnpt | grep master
 ```
 If you’d like to view the various binaries shipped along with postfix check them out with:
-```
-    dpkg -L postfix | grep /usr/sbin/
+```shell
+dpkg -L postfix | grep /usr/sbin/
 ```
 Sendmail is a binary place at /usr/sbin/sendmail which is compatible with postfix.
 
 Send out your first testmail to your test email account using :
-```
-    echo "test email" | sendmail your-test-account@gmail.com
+```shell
+echo "test email" | sendmail your-test-account@gmail.com
 ```
 Or you could install mailutils using sudo apt install mailutils . Just type mail and follow along the prompts entering the required fields and hitting Ctrl+D once done to send the mail.
 
 Note: The email might land through into your primary right away but could be potentially flagged by other stronger MTA’s and their spam filters.
 
 In case your hosting provider has blocked outbound port 25, verify it using:
-```
-    telnet gmail-SMTP-in.l.google.com 25
+```shell
+telnet gmail-SMTP-in.l.google.com 25
 ```
 If you see a status showing "Connected" --> outbound 25 works successfully. Use quit to quit the command.
 
@@ -119,35 +117,35 @@ For DKIM signing we will use OpenDKIM
 Step 1. Installing OpenDKIM on Your Postfix Server
 
 Start with installation:
-```
+```shell
 
-    sudo apt install opendkim opendkim-tools
+sudo apt install opendkim opendkim-tools
 
-    sudo systemctl start opendkim
+sudo systemctl start opendkim
 
-    sudo systemctl enable opendkim
+sudo systemctl enable opendkim
 ```
 Create the dkim keys
 ```
-    opendkim-genkey -b 2048 -D /etc/opendkim/ --domain example.com –selector mail
+opendkim-genkey -b 2048 -D /etc/opendkim/ --domain example.com –selector mail
 ```
 Creates two files mail.private and mail.txt, we’re going to copy the contents of mail.txt to add to our dns records
 ```
-    sudo chown -R opendkim:opendkim /etc/opendkim
+sudo chown -R opendkim:opendkim /etc/opendkim
 ```
 Step 2: Configure OpenDKIM
 
 Edit OpenDKIM main configuration file
-```
-    sudo vi /etc/opendkim.conf
+```shell
+sudo vi /etc/opendkim.conf
 ```
 Add:
 ```
-    Autorestart                     	yes
+Autorestart                     	yes
 
-    AutorestartRate            	10/1h
+AutorestartRate            	10/1h
 
-    Uncomment #LogWhy and change from no to yes
+Uncomment #LogWhy and change from no to yes
 ```
 Find the “Mode v” line, and change it to “Mode sv”. By default, OpenDKIM is set to verification mode (v), which verifies the DKIM signatures of receiving email messages. Changing the mode to “sv,” will let us activate the signing mode for outgoing emails.
 
@@ -155,23 +153,23 @@ Change “Mode v” to “Mode sv”
 
 Comment out
 ```
-    #Socket	local:/run/opendkim/opendkim.sock
+#Socket	local:/run/opendkim/opendkim.sock
 ```
 and Uncomment
 ```
-    #Socket	inet:8891@localhost
+#Socket	inet:8891@localhost
 ```
 In the same OpenDKIM Configuration file, add these lines to the bottom of the file:
 ```
-    ExternalIgnoreList refile:/etc/opendkim/TrustedHosts
+ExternalIgnoreList refile:/etc/opendkim/TrustedHosts
 
-    InternalHosts refile:/etc/opendkim/TrustedHosts
+InternalHosts refile:/etc/opendkim/TrustedHosts
 
-    KeyTable refile:/etc/opendkim/KeyTable
+KeyTable refile:/etc/opendkim/KeyTable
 
-    SigningTable refile:/etc/opendkim/SigningTable
+SigningTable refile:/etc/opendkim/SigningTable
 
-    SignatureAlgorithm     	rsa-sha256
+SignatureAlgorithm     	rsa-sha256
 ```
 
 
@@ -179,42 +177,41 @@ Now create the files TrustedHosts, KeyTable, and SigningTable with touch
 
 In the TrustedHosts file we’ll add:
 ```
-    127.0.0.1
+127.0.0.1
 
-    ::1
+::1
 
-    Public ip of server or any other server you plan to use with it, can use curl ip.me to find that out
+Public ip of server or any other server you plan to use with it, can use curl ip.me to find that out
 
-    Example.com
+Example.com
 
-    *.example.com
+*.example.com
 ```
 KeyTable file:
 ```
-    mail._domainkey.example.com example.com:mail:/etc/opendkim/mail.private
+mail._domainkey.example.com example.com:mail:/etc/opendkim/mail.private
 ```
 SigningTable file:
 ```
-    *.example.com mail._domainkey.example.com
+*.example.com mail._domainkey.example.com
+```
+```shell
+Sudo systemctl restart postfix
 
-
-
-    Sudo systemctl restart postfix
-
-    Sudo systemctl restart opendkim
+Sudo systemctl restart opendkim
 ```
 
 
 You can test the email sending with the below command like so:
 ```
-    /usr/sbin/sendmail john.doe@gmail.com
+/usr/sbin/sendmail john.doe@gmail.com
 
-    From: mike@example.com
+From: mike@example.com
 
-    Subject: Test Subject
+Subject: Test Subject
 
-    Test body
+Test body
 
-    CTRL-D to close and send
+CTRL-D to close and send
 ```
 Congratulations! Now you can use this with gophish and start your phishing campaign!
