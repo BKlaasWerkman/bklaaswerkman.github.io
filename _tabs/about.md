@@ -23,5 +23,3 @@ My skills span various domains of cybersecurity, including:
 I'm always open to connecting. Reach out to me at Berrick@werkman.xyz or connect on <https://linkedin.com/in/berrickwerkman>.
 
 Together, we can build a safer digital world.
-
-Berrick Werkman

@@ -130,11 +130,11 @@ sudo systemctl start opendkim
 sudo systemctl enable opendkim
 ```
 Create the dkim keys
-```
+```shell
 opendkim-genkey -b 2048 -D /etc/opendkim/ --domain example.com –selector mail
 ```
 Creates two files mail.private and mail.txt, we’re going to copy the contents of mail.txt to add to our dns records
-```
+```shell
 sudo chown -R opendkim:opendkim /etc/opendkim
 ```
 Step 2: Configure OpenDKIM
@@ -145,11 +145,11 @@ sudo vi /etc/opendkim.conf
 ```
 Add:
 ```shell
-Autorestart                     	yes
+Autorestart yes
 
-AutorestartRate            	10/1h
+AutorestartRate 10/1h
 
-Uncomment #LogWhy and change from no to yes
+LogWhy yes
 ```
 {: file='/etc/opendkim.conf'}
 Find the “Mode v” line, and change it to “Mode sv”. By default, OpenDKIM is set to verification mode (v), which verifies the DKIM signatures of receiving email messages. Changing the mode to “sv,” will let us activate the signing mode for outgoing emails.
@@ -163,7 +163,7 @@ Comment out
 {: file='/etc/opendkim.conf'}
 and Uncomment
 ```shell
-#Socket	inet:8891@localhost
+Socket	inet:8891@localhost
 ```
 {: file='/etc/opendkim.conf'}
 In the same OpenDKIM Configuration file, add these lines to the bottom of the file:
@@ -214,14 +214,14 @@ Sudo systemctl restart opendkim
 
 
 You can test the email sending with the below command like so:
-```
+```shell
 /usr/sbin/sendmail john.doe@gmail.com
 
-From: mike@example.com
+        From: mike@example.com
 
-Subject: Test Subject
+        Subject: Test Subject
 
-Test body
+        Test body
 
 CTRL-D to close and send
 ```
