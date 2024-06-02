@@ -49,3 +49,6 @@ for link in tcp_links:
 print('Download completed.')
 ```
 {: file='nordscraper.py'}
+
+> You will need an active NordVPN subscription to use openvpn
+{. prompt-warning }
