@@ -4,7 +4,7 @@ description: Python script that downloads all tcp ovpn files from nordvpn.com
 author: BW
 date: 2024-06-02 10:00:00 - 0500
 categories: [CyberSecurity, Privacy]
-tags: [randon]     # TAG names should always be lowercase
+tags: [random]     # TAG names should always be lowercase
 image:
   path: /assets/img/posts/2024-06-02-Nord-Scraper/nordscraping.webp
   lqip: /assets/img/posts/2024-06-02-Nord-Scraper/nordscraping.webp
