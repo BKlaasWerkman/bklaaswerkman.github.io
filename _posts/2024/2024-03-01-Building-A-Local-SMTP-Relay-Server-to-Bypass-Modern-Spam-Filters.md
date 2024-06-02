@@ -5,6 +5,9 @@ author: BW
 date: 2024-03-01 20:00:00 - 0500
 categories: [CyberSecurity, Phishing]
 tags: [phish]     # TAG names should always be lowercase
+image:
+  path: /assets/img/posts/2024-03-01-Building-A-Local-SMTP-Relay-Server-to-Bypass-Modern-Spam-Filters/spam.webp
+  lqip: /assets/img/posts/2024-03-01-Building-A-Local-SMTP-Relay-Server-to-Bypass-Modern-Spam-Filters/spam.webp
 ---
 
 
