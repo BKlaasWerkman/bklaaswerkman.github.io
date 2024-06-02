@@ -6,8 +6,8 @@ date: 2024-06-02 10:00:00 - 0500
 categories: [CyberSecurity, Privacy]
 tags: [randon]     # TAG names should always be lowercase
 image:
-  path: /_posts/2024/2024-06-02-Nord-Scraper/nordscraping.webp
-  lqip: /_posts/2024/2024-06-02-Nord-Scraper/nordscraping.webp
+  path: /_posts/2024/2024-06-02-Nord-Scraper/nordscraping.png
+  lqip: /_posts/2024/2024-06-02-Nord-Scraper/nordscraping.png
 ---
 
 Proxies are great, but they tend to have poor reputations. 
