@@ -141,7 +141,7 @@ Edit OpenDKIM main configuration file
 sudo vi /etc/opendkim.conf
 ```
 Add:
-```sass
+```shell
 Autorestart                     	yes
 
 AutorestartRate            	10/1h
@@ -154,17 +154,17 @@ Find the “Mode v” line, and change it to “Mode sv”. By default, OpenDKIM
 Change “Mode v” to “Mode sv”
 
 Comment out
-```sass
+```shell
 #Socket	local:/run/opendkim/opendkim.sock
 ```
 {: file='/etc/opendkim.conf'}
 and Uncomment
-```sass
+```shell
 #Socket	inet:8891@localhost
 ```
 {: file='/etc/opendkim.conf'}
 In the same OpenDKIM Configuration file, add these lines to the bottom of the file:
-```sass
+```shell
 ExternalIgnoreList refile:/etc/opendkim/TrustedHosts
 
 InternalHosts refile:/etc/opendkim/TrustedHosts
@@ -180,7 +180,7 @@ SignatureAlgorithm     	rsa-sha256
 Now create the files TrustedHosts, KeyTable, and SigningTable with touch
 
 In the TrustedHosts file we’ll add:
-```sass
+```shell
 127.0.0.1
 
 ::1
@@ -194,12 +194,12 @@ Example.com
 {: file='/etc/opendkim/TrustedHosts'}
 
 KeyTable file:
-```sass
+```shell
 mail._domainkey.example.com example.com:mail:/etc/opendkim/mail.private
 ```
 {: file='/etc/opendkim/KeyTable'}
 SigningTable file:
-```sass
+```shell
 *.example.com mail._domainkey.example.com
 ```
 {: file='/etc/opendkim/SigningTable'}

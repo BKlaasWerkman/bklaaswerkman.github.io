@@ -14,7 +14,7 @@ Proxies are great, but they tend to have poor reputations.
 For example, they tend to trigger cloudflares captcha page which can be annoying.
 This script downloads all the ovpn file from nordvpn's website to be used for whatever you want, very handy for scripting. You'll have access to over 6000 different servers (and different public IPs) across many different countries.
 
-```sass
+```python
 import requests
 from bs4 import BeautifulSoup
 import os
