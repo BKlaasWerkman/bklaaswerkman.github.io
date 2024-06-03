@@ -24,7 +24,7 @@ Mail Transfer Agent (MTA): The transport service part of a program. They receive
 A workflow of an email´s travel from one user to another would look like so: 
 
 
-![Desktop View](/assets/img/posts/2024-03-01-Building-A-Local-SMTP-Relay-Server-to-Bypass-Modern-Spam-Filters/email_flow_diagram.png){: width="972" height="412" }
+![Desktop View](/assets/img/posts/2024-03-01-Building-A-Local-SMTP-Relay-Server-to-Bypass-Modern-Spam-Filters/email_flow_diagram.png){: width="972" height="450" }
 
 A “relay” SMTP system receives mail from an SMTP client and transmits it, without modification to the message data other than adding trace information, to another SMTP server for further relaying or for delivery.
 
