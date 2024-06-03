@@ -22,7 +22,9 @@ Mail User Agent (MUA): This is a (part of a) program connecting to a SMTP-server
 Mail Transfer Agent (MTA): The transport service part of a program. They receive and transfer the emails. This might be an Exchange server, an internet facing gateway and so on.
 
 A workflow of an email´s travel from one user to another would look like so: 
-__MUA → MSA → MTA → internet → MTA → MDA → MUA__
+
+
+![Desktop View](/assets/img/posts/2024-03-01-Building-A-Local-SMTP-Relay-Server-to-Bypass-Modern-Spam-Filters/email_flow_diagram.png){: width="972" height="412" }
 
 A “relay” SMTP system receives mail from an SMTP client and transmits it, without modification to the message data other than adding trace information, to another SMTP server for further relaying or for delivery.
 
