@@ -11,7 +11,6 @@ tags: [scripting]     # TAG names should always be lowercase
 
 
 ```python
-
 '''
 DISCRIPTION
     Python script to log into LastPass CLI and query which accounts based on entered Account Name keyword have weak passwords and export the data with columns containing Account Name and Username to csv & excel files.
