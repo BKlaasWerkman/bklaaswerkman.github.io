@@ -1,4 +1,4 @@
---
+---
 title: Powershell Challenge dotnetSDK
 description: Downloads the .NET SDK, check the downloaded file's signature and issuer are valid. Check with VirusTotal API using the hash value of the downloaded file. Install the SDK silently, log all installed SDK versions, and then finally uninstall all the previous versions. 
 author: BW
