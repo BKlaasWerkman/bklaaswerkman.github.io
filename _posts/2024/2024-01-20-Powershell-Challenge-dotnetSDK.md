@@ -24,26 +24,21 @@ DateCreated: 19 Jan 24
 #>
 
 # Download .NET SDK
-
 $installDir = "C:\install"
 $downloadUrl = "https://download.visualstudio.microsoft.com/download/pr/cb56b18a-e2a6-4f24-be1d-fc4f023c9cc8/be3822e20b990cf180bb94ea8fbc42fe/dotnet-sdk-8.0.101-win-x64.exe"
 $filePath = Join-Path -Path $installDir -ChildPath "dotnet-sdk-8.0.101-win-x64.exe"
 
 # Define log file path with current date, time, and hostname
-
 $currentDateTime = Get-Date -Format "yyyyMMddHHmmss"
 $hostName = $env:COMPUTERNAME
 $logPath = "C:\install\$($currentDateTime)_$($hostName).log"
 
 # Create directory if it doesn't exist
-
 if (!(Test-Path -Path $installDir)) {
     New-Item -ItemType Directory -Path $installDir
-
 }
 
 # Function to write log
-
 function Write-Log {
     param (
         [Parameter(ValueFromPipeline=$true)]
@@ -64,7 +59,6 @@ $expectedIssuer = "CN=Microsoft Code Signing PCA 2011, O=Microsoft Corporation, 
 
 
 # Check the signature status and issuer
-
 if ($signature.Status -ne "Valid" -or $signature.SignerCertificate.Issuer -ne $expectedIssuer) {
     $logContent = "Invalid signature or issuer.`n"
     $logContent += "File Path: $filePath`n"
@@ -130,7 +124,6 @@ $dotNetSdks = Get-ChildItem -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\
         Write-Log "Found SDK: $($sdk.DisplayName)"
 
        # Check if the DisplayName contains the target version
-
         if ($sdk.DisplayName -notlike "*$targetVersion*") {
             if ($sdk.UninstallString) {
                 Write-Log "Uninstalling $($sdk.DisplayName)"
