@@ -13,24 +13,19 @@ tags: [scripting]     # TAG names should always be lowercase
 ```python
 
 '''
-
 DISCRIPTION
-
     Python script to log into LastPass CLI and query which accounts based on entered Account Name keyword have weak passwords and export the data with columns containing Account Name and Username to csv & excel files.
     Exported files will be in current working directory of script.
     Excel file will open automatically for you.
 
 NOTES
-
     Name: Get-lastpass
     Author: B. Werkman
     Version: 1.0
     DateCreated: Jan 2024
 
 ***Passwords will not be exported***
-
 '''
-
 import re
 import csv
 import getpass
@@ -150,6 +145,5 @@ print(f"Accounts with Non-Complex Passwords also exported to {excel_filename}")
 # Open the Excel file
 excel_file_path = os.path.abspath(excel_filename)
 webbrowser.open(f'file://{excel_file_path}')
-
 ```
 {: file='Get-Lastpass.py'}
