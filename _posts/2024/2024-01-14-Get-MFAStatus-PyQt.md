@@ -1,6 +1,6 @@
 ---
-title: GUI_Get-MFAStatus
-description: Python GUI frontend for the Get-MFAStatus.ps1 powershell script
+title: GUI_Get-MFAStatus.pyw
+description: Python GUI frontend for the Get-MFAStatus.ps1 powershell script using PyQt library.
 author: BW
 date: 2024-01-14 12:00:00 - 0500
 categories: [Scripting, Python]
