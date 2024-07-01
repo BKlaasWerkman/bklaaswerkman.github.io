@@ -10,7 +10,7 @@ tags: [scripting]     # TAG names should always be lowercase
 ### Get-Lastpass.py
 
 
-```Python
+```python
 
 '''
 
