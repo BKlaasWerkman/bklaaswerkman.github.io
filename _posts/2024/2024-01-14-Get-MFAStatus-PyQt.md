@@ -10,18 +10,19 @@ tags: [scripting]     # TAG names should always be lowercase
 ### GUI_Get-MFAStatus.pyw 
 
 ```python
-#DESCRIPTION
-#  Python GUI frontend for the Get-MFAStatus.ps1 powershell script
-#  This script will get the Azure MFA Status of users. You can query all the users, admins only or a single user.
-#  
-#  It will return the MFA Status, MFA type and registered devices.
+'''
+DESCRIPTION
+  Python GUI frontend for the Get-MFAStatus.ps1 powershell script
+  This script will get the Azure MFA Status of users. You can query all the users, admins only or a single user.
+  
+  It will return the MFA Status, MFA type and registered devices.
 
-#NOTES
-#  Name: GUI_Get-MFAStatus
-#  Author: B. Werkman
-#  Version: 1.1
-#  DateCreated: Jan 2024
-
+NOTES
+  Name: GUI_Get-MFAStatus
+  Author: B. Werkman
+  Version: 1.1
+  DateCreated: Jan 2024
+'''
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QInputDialog, QLineEdit, QLabel
 from PyQt5.QtGui import QPixmap, QIcon
