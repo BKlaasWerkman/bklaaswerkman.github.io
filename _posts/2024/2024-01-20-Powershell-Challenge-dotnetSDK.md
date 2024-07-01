@@ -57,7 +57,6 @@ $signature = Get-AuthenticodeSignature -FilePath $filePath
 
 $expectedIssuer = "CN=Microsoft Code Signing PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
 
-
 # Check the signature status and issuer
 if ($signature.Status -ne "Valid" -or $signature.SignerCertificate.Issuer -ne $expectedIssuer) {
     $logContent = "Invalid signature or issuer.`n"
@@ -66,7 +65,6 @@ if ($signature.Status -ne "Valid" -or $signature.SignerCertificate.Issuer -ne $e
     $logContent += "Issuer: $($signature.SignerCertificate.Issuer)`n"
     $logContent | Write-Log
     exit
-
 }
 
 # Check with VirusTotal
