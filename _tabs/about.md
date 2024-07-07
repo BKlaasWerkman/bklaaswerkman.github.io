@@ -5,7 +5,8 @@ order: 6
 ---
 
 ### Who I Am
-Welcome! I'm a passionate Security Researcher and Ethical Hacker with over 5 years of experience in the field of cybersecurity. My journey began with a deep fascination for technology and an unyielding curiosity to understand how systems work from the inside out. Today, I dedicate my skills and expertise to making the digital world a safer place for everyone.
+
+Hi there! I'm an IT professional with over 7 years of experience working for managed service providers (MSP). I love solving complex technical problems and delivering high-quality solutions to clients across various industries. I have a strong background in network administration, cloud computing, cybersecurity, and IT support. I'm always eager to learn new skills and technologies to keep up with the fast-paced IT world. I'm also passionate about sharing my knowledge and expertise with others through mentoring, training, and blogging. I'm looking for new opportunities to grow and challenge myself as an IT professional. If you're interested in connecting with me, feel free to send me a message or an invitation. I'd love to hear from you!
 
 ### My Mission
 In an era where cyber threats are ever-evolving, my mission is to stay ahead of the curve, identifying vulnerabilities before malicious actors can exploit them. I am committed to protecting sensitive data, ensuring privacy, and fostering a secure online environment. Ethical hacking is not just a profession for me; it's a commitment to upholding the integrity and security of information systems worldwide.
